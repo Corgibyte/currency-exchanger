@@ -2,11 +2,25 @@ body {
   background-color:#2F313A;
 }
 
+hr {
+  background-image: linear-gradient(270deg,#5C8595,transparent 75%);
+  border:0;
+  height:5px;
+}
+
+#holder {
+  background-color:#048063;
+  max-width:700px;
+  padding:0.5rem 1rem 0.5rem 1rem;
+  border-radius:30px;
+  margin-top:1rem;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px;
+}
 #inputs {
   max-width: 500px;
-  margin: 50px 2px 2px 2px;
+  margin: 2px 2px 2px 2px;
   border-radius: 25px;
-  background-color:#800421;
+  background-color:#5C8595;
   padding:1rem;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px;
 }
@@ -25,7 +39,7 @@ body {
 }
 
 h2 {
-  background-color:#53d8ac;
+  background-color:#5C8595;
   font-size:large;
   max-width: 500px;
   padding:0.5rem;
