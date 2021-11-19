@@ -28,12 +28,14 @@ $('#inputForm').on('submit', (event) => {
   const targetCurrency = $('#targetCurrency').val();
   const exchangeAmount = parseFloat($('#exchangeAmount').val());
   if (exchange.exchangeRate[originCurrency] === 1) {
-    const output = `${exchangeAmount} ${Codes[originCurrency]} can be exchanged to ${exchange.convert(targetCurrency, exchangeAmount)} ${Codes[targetCurrency]}`;
+    const output = `${exchangeAmount} ${Codes[originCurrency]} can be exchanged to ${exchange.convert(targetCurrency, exchangeAmount).toFixed(2)} ${Codes[targetCurrency]}`;
     $('#outputMessage').text(output);
+    $('#outputs').show();
   } else {
     getExchange(originCurrency).then(() => {
-      const output = `${exchangeAmount} ${Codes[originCurrency]} can be exchanged to ${exchange.convert(targetCurrency, exchangeAmount)} ${Codes[targetCurrency]}`;
+      const output = `${exchangeAmount} ${Codes[originCurrency]} can be exchanged to ${exchange.convert(targetCurrency, exchangeAmount).toFixed(2)} ${Codes[targetCurrency]}`;
       $('#outputMessage').text(output);
+      $('#outputs').show();
     });
   }
 });
