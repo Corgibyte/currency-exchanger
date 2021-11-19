@@ -5,23 +5,40 @@ import './css/styles.css';
 import Exchange from './js/exchange.js';
 import Codes from './assets/data/currencyCodes.json';
 
-Exchange.build().then((exchange) => {
-  getCurrencyElements();
 
-  $('#inputForm').on('submit', (event) => {
-    event.preventDefault();
-    const targetCurrency = $('#currencies').val();
-    const exchangeAmount = parseFloat($('#exchangeAmount').val());
-    $('#outputMessage').text(exchange.convert(targetCurrency, exchangeAmount));
+function getExchange(originCurrency = "USD") {
+  return Exchange.build(originCurrency).then((newExchange) => {
+    exchange = newExchange;
   });
+}
 
-  function getCurrencyElements() {
-    const currencies = Object.keys(exchange.exchangeRate);
-    let htmlString = "";
-    currencies.forEach((currency) => {
-      htmlString += `<option value="${currency}">${currency}: ${Codes[currency]}</option>`;
+function getCurrencyElements() {
+  const currencies = Object.keys(exchange.exchangeRate);
+  let htmlString = "";
+  currencies.forEach((currency) => {
+    htmlString += `<option value="${currency}">${currency}: ${Codes[currency]}</option>`;
+  });
+  $('#targetCurrency').html("<option selected>Choose target currency</option>" + htmlString);
+  $('#originCurrency').html("<option selected>Choose origin currency</option>" + htmlString);
+}
+
+$('#inputForm').on('submit', (event) => {
+  event.preventDefault();
+  const originCurrency = $('#originCurrency').val();
+  const targetCurrency = $('#targetCurrency').val();
+  const exchangeAmount = parseFloat($('#exchangeAmount').val());
+  if (exchange.exchangeRate[originCurrency] === 1) {
+    const output = `${exchangeAmount} ${Codes[originCurrency]} can be exchanged to ${exchange.convert(targetCurrency, exchangeAmount)} ${Codes[targetCurrency]}`;
+    $('#outputMessage').text(output);
+  } else {
+    getExchange(originCurrency).then(() => {
+      const output = `${exchangeAmount} ${Codes[originCurrency]} can be exchanged to ${exchange.convert(targetCurrency, exchangeAmount)} ${Codes[targetCurrency]}`;
+      $('#outputMessage').text(output);
     });
-    $('#targetCurrency').html("<option selected>Choose target currency</option>" + htmlString);
-    $('#originCurrency').html("<option selected>Choose origin currency</option>" + htmlString);
   }
 });
+
+
+let exchange;
+
+getExchange().then(() => getCurrencyElements());
