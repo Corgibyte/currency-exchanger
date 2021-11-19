@@ -5,31 +5,23 @@ import './css/styles.css';
 import Exchange from './js/exchange.js';
 import Codes from './assets/data/currencyCodes.json';
 
-getExchange();
+Exchange.build().then((exchange) => {
+  getCurrencyElements();
 
-$('#inputForm').on('submit', (event) => {
-  event.preventDefault();
-  const exchange = JSON.parse(sessionStorage.getItem('exchange'));
-  const targetCurrency = $('#currencies').val();
-  const exchangeAmount = parseFloat($('#exchangeAmount').val());
-  $('#outputMessage').text(exchange.convert(targetCurrency, exchangeAmount));
-});
-
-function getExchange(originCurrency = "USD") {
-  if (!sessionStorage.getItem('exchange') || !Object.prototype.hasOwnProperty.call(sessionStorage.getItem('exchange'), 'exchangeRate')) {
-    Exchange.build(originCurrency).then((newExchange) => {
-      sessionStorage.setItem('exchange', JSON.stringify(newExchange));
-      getCurrencyElements();
-    });  
-  }
-}
-
-function getCurrencyElements() {
-  const exchange = JSON.parse(sessionStorage.getItem('exchange'));
-  const currencies = Object.keys(exchange.exchangeRate);
-  let htmlString = "<option selected>Choose a currency</option>";
-  currencies.forEach((currency) => {
-    htmlString += `<option value="${currency}">${currency}: ${Codes[currency]}</option>`;
+  $('#inputForm').on('submit', (event) => {
+    event.preventDefault();
+    const targetCurrency = $('#currencies').val();
+    const exchangeAmount = parseFloat($('#exchangeAmount').val());
+    $('#outputMessage').text(exchange.convert(targetCurrency, exchangeAmount));
   });
-  $('#currencies').html(htmlString);
-}
+
+  function getCurrencyElements() {
+    const currencies = Object.keys(exchange.exchangeRate);
+    let htmlString = "";
+    currencies.forEach((currency) => {
+      htmlString += `<option value="${currency}">${currency}: ${Codes[currency]}</option>`;
+    });
+    $('#targetCurrency').html("<option selected>Choose target currency</option>" + htmlString);
+    $('#originCurrency').html("<option selected>Choose origin currency</option>" + htmlString);
+  }
+});
