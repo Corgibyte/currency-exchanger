@@ -49,7 +49,7 @@ $('#clearHistory').on('click', () => {
   $('#outputs').hide();
 });
 
-
+//Initialization
 let exchange;
 
 getExchange().then(() => getCurrencyElements());
