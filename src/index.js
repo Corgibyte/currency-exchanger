@@ -9,10 +9,9 @@ getExchange();
 
 $('#inputForm').on('submit', (event) => {
   event.preventDefault();
-  const targetCurrency = $('targetCurrency').val();
-  const exchangeAmount = parseFloat($('exchangeAmount').val());
-  console.log(exchange.convert(targetCurrency, exchangeAmount));
-  //$('outputMessage').text(exchange.convert(targetCurrency, exchangeAmount));
+  const targetCurrency = $('#targetCurrency').val();
+  const exchangeAmount = parseFloat($('#exchangeAmount').val());
+  $('#outputMessage').text(exchange.convert(targetCurrency, exchangeAmount));
 });
 
 function getExchange(originCurrency = "USD") {
