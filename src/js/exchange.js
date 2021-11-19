@@ -10,14 +10,14 @@ export default class Exchange {
   static build(originCurrency = "USD") {
     let servicePromise = ExchangeService.getExchangeRate(originCurrency);
     return servicePromise.then((exchangeObject) => {
-      return new Exchange(originCurrency, exchangeObject.converion_rates);
+      return new Exchange(originCurrency, exchangeObject.conversion_rates);
     });
   }
 
   convert(targetCurrency, amount) {
-    if (!this.exchangeRate.hasOwnProperty(targetCurrency)) {
+    if (!Object.prototype.hasOwnProperty.call(this.exchangeRate, targetCurrency)) {
       return "Invalid currency";
     }
-    return exchangeRate.targetCurrency * amount;
+    return this.exchangeRate[targetCurrency] * amount;
   }
 }
