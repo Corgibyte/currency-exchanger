@@ -6,7 +6,7 @@ body {
   max-width: 500px;
   margin: 50px 2px 2px 2px;
   border-radius: 25px;
-  background-color:#de8b67;
+  background-color:#800421;
   padding:1rem;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px;
 }
@@ -32,3 +32,4 @@ h2 {
   border-radius:13px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px;
 }
+
