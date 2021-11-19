@@ -25,7 +25,7 @@ function getCurrencyElements() {
 function outputExchange(originCurrency, targetCurrency, originAmount, targetAmount) {
   const output = `${originAmount} ${Codes[originCurrency]} can be exchanged to ${targetAmount.toFixed(2)} ${Codes[targetCurrency]}`;
   const htmlStr = `<h2>${output}</h2>`;
-  $('#outputs').prepend(htmlStr);
+  $('#outputMessages').prepend(htmlStr);
   $('#outputs').show();
 }
 
@@ -41,6 +41,11 @@ $('#inputForm').on('submit', (event) => {
       outputExchange(originCurrency, targetCurrency, exchangeAmount, exchange.convert(targetCurrency, exchangeAmount));
     });
   }
+});
+
+$('#clearHistory').on('click', () => {
+  $('#outputMessages').html("");
+  $('#outputs').hide();
 });
 
 
