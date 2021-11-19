@@ -22,20 +22,23 @@ function getCurrencyElements() {
   $('#originCurrency').html("<option selected>Choose origin currency</option>" + htmlString);
 }
 
+function outputExchange(originCurrency, targetCurrency, originAmount, targetAmount) {
+  const output = `${originAmount} ${Codes[originCurrency]} can be exchanged to ${targetAmount.toFixed(2)} ${Codes[targetCurrency]}`;
+  const htmlStr = `<h2>${output}</h2>`;
+  $('#outputs').prepend(htmlStr);
+  $('#outputs').show();
+}
+
 $('#inputForm').on('submit', (event) => {
   event.preventDefault();
   const originCurrency = $('#originCurrency').val();
   const targetCurrency = $('#targetCurrency').val();
   const exchangeAmount = parseFloat($('#exchangeAmount').val());
   if (exchange.exchangeRate[originCurrency] === 1) {
-    const output = `${exchangeAmount} ${Codes[originCurrency]} can be exchanged to ${exchange.convert(targetCurrency, exchangeAmount).toFixed(2)} ${Codes[targetCurrency]}`;
-    $('#outputMessage').text(output);
-    $('#outputs').show();
+    outputExchange(originCurrency, targetCurrency, exchangeAmount, exchange.convert(targetCurrency, exchangeAmount));
   } else {
     getExchange(originCurrency).then(() => {
-      const output = `${exchangeAmount} ${Codes[originCurrency]} can be exchanged to ${exchange.convert(targetCurrency, exchangeAmount).toFixed(2)} ${Codes[targetCurrency]}`;
-      $('#outputMessage').text(output);
-      $('#outputs').show();
+      outputExchange(originCurrency, targetCurrency, exchangeAmount, exchange.convert(targetCurrency, exchangeAmount));
     });
   }
 });
