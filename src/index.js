@@ -23,7 +23,7 @@ function getCurrencyElements() {
 }
 
 function outputExchange(originCurrency, targetCurrency, originAmount, targetAmount) {
-  const output = `${originAmount} ${Codes[originCurrency]} can be exchanged to ${targetAmount.toFixed(2)} ${Codes[targetCurrency]}`;
+  const output = `<strong>${originAmount}</strong> ${Codes[originCurrency]} exchanges to <strong>${targetAmount.toFixed(2)}</strong> ${Codes[targetCurrency]}`;
   const htmlStr = `<h2>${output}</h2>`;
   $('#outputMessages').prepend(htmlStr);
   $('#outputs').show();
@@ -34,6 +34,7 @@ $('#inputForm').on('submit', (event) => {
   const originCurrency = $('#originCurrency').val();
   const targetCurrency = $('#targetCurrency').val();
   const exchangeAmount = parseFloat($('#exchangeAmount').val());
+  $('#exchangeAmount').val("");
   if (exchange.exchangeRate[originCurrency] === 1) {
     outputExchange(originCurrency, targetCurrency, exchangeAmount, exchange.convert(targetCurrency, exchangeAmount));
   } else {
