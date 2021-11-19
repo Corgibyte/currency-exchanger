@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corgibyte Currency Exchange</title>
+</head>
+<body>
+  <div class="container">
+    <div id="holder">
+      <h1>Currency Exchange</h1>
+      <hr>
+      <form id="inputForm">
+        <div id="inputs">
+          <div class="form-group">
+            <select id="originCurrency" class="form-select">            
+            </select>
+          </div>
+          <div class="form-group">
+            <select id="targetCurrency" class="form-select">            
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control" id="exchangeAmount" placeholder="Amount to exchange" min=0 required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Calculate</button>
+          </div>
+        </div>
+      </form>
+      <div id="outputs">
+        <div id="outputMessages"></div>
+        <button id="clearHistory" class="btn btn-danger">Clear History</button>
+      </div>
+    </div>
+  </div>
+<script defer src="bundle.js"></script></body>
+</html>
