@@ -10,7 +10,7 @@ hr {
 
 #holder {
   background-color:#048063;
-  max-width:700px;
+  max-width:550px;
   padding:0.5rem 1rem 0.5rem 1rem;
   border-radius:30px;
   margin-top:1rem;
@@ -21,7 +21,7 @@ hr {
   margin: 2px 2px 2px 2px;
   border-radius: 25px;
   background-color:#5C8595;
-  padding:1rem;
+  padding:0.75rem;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px;
 }
 
@@ -34,6 +34,7 @@ hr {
 }
 
 #outputs {
+  display:none;
   padding-top:1rem;
   margin: 0px 2px 2px 2px;
 }
@@ -47,3 +48,17 @@ h2 {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px;
 }
 
+.btn-primary {
+  background-color:#895C95;
+  border-color:#895C95;
+}
+
+.btn-primary:hover {
+  background-color:#a178ac;
+  border-color:#5C9589;
+}
+
+.btn-primary:focus {
+  background-color:#895C95;
+  border-color:#5C9589;
+}
