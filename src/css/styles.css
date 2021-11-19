@@ -1,0 +1,34 @@
+body {
+  background-color:#2F313A;
+}
+
+#inputs {
+  max-width: 500px;
+  margin: 50px 2px 2px 2px;
+  border-radius: 25px;
+  background-color:#de8b67;
+  padding:1rem;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px;
+}
+
+.form-group {
+  margin-bottom:2px;
+}
+
+.btn {
+  margin-top:2px;
+}
+
+#outputs {
+  padding-top:1rem;
+  margin: 0px 2px 2px 2px;
+}
+
+h2 {
+  background-color:#53d8ac;
+  font-size:large;
+  max-width: 500px;
+  padding:0.5rem;
+  border-radius:13px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px;
+}
