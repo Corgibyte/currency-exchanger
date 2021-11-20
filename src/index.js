@@ -9,6 +9,8 @@ import Codes from './assets/data/currencyCodes.json';
 function getExchange(originCurrency = "USD") {
   return Exchange.build(originCurrency).then((newExchange) => {
     exchange = newExchange;
+  }).catch((error) => {
+    $('#holder').html(`<h1>Server error: ${error.message}</h1>`);
   });
 }
 
@@ -52,4 +54,4 @@ $('#clearHistory').on('click', () => {
 //Initialization
 let exchange;
 
-getExchange().then(() => getCurrencyElements());
+getExchange().then(() => getCurrencyElements()).catch(() => {});

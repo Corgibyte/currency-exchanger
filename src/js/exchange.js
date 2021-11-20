@@ -11,6 +11,8 @@ export default class Exchange {
     let servicePromise = ExchangeService.getExchangeRate(originCurrency);
     return servicePromise.then((exchangeObject) => {
       return new Exchange(originCurrency, exchangeObject.conversion_rates);
+    }).catch((error) => {
+      throw Error(error.message);
     });
   }
 

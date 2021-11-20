@@ -7,6 +7,8 @@ export default class ExchangeService {
       } else {
         return fetchResponse.json();
       }
+    }).catch((error) => {      
+      throw Error(error.message);
     });
   }
 }
