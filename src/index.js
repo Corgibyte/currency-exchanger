@@ -25,7 +25,7 @@ function getCurrencyElements() {
 }
 
 function outputExchange(originCurrency, targetCurrency, originAmount, targetAmount) {
-  const output = `<strong>${originAmount}</strong> ${Codes[originCurrency]} exchanges to <strong>${targetAmount.toFixed(2)}</strong> ${Codes[targetCurrency]}`;
+  const output = `<strong>${originAmount}</strong> ${Codes[originCurrency]}s exchange to <strong>${targetAmount.toFixed(2)}</strong> ${Codes[targetCurrency]}s`;
   const htmlStr = `<h2>${output}</h2>`;
   $('#outputMessages').prepend(htmlStr);
   $('#outputs').show();
