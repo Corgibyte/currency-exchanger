@@ -1,3 +1,5 @@
+![Screenshot of Running Website](./src/assets/img/screenshot.jpg)
+
 ## Currency Exchanger
 
 By Hannah Young
